@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     less = require('gulp-less'),
     notifier = require('node-notifier'),
+    concat = require('gulp-concat'),
     combiner = require('stream-combiner2');
 
 var lessInput = './lessfile/*.less';
@@ -9,6 +10,7 @@ gulp.task('less', function() {
     var combined = combiner.obj([
         gulp.src(lessInput),
         less(),
+        concat('style.css'),
         gulp.dest('output')
     ]);
 
